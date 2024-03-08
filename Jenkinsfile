@@ -4,9 +4,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                /*build 'PES2UG21CS012-1'
+                //build 'PES2UG21CS012-1'
                 sh 'g++ main.cpp -o output '
-		echo 'Building the project...'*/
+		echo 'Building the project...'
             }
         }
         stage('Test') {
