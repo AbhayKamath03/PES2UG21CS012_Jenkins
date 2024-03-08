@@ -4,15 +4,15 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                //build 'PES2UG21CS012-1'
-                sh 'g++ main.cpp -o output '
-		echo 'Building the project...'
+                sh 'g++ main.cpp -o output'
+                echo 'Building the project...'
             }
         }
         stage('Test') {
             steps {
-                sh './output'
-		echo 'Running tests...'
+                // Intentionally causing the 'Test' stage to fail
+                sh 'echo "Error: Testing failed" && exit 1'
+                echo 'Running tests...'
             }
         }
         stage('Deploy') {
@@ -25,7 +25,7 @@ pipeline {
     post {
         failure {
             // Display "pipeline failed" if any of the stages fail
-            error 'pipeline failed'
+            error 'Pipeline failed'
         }
     }
 }
